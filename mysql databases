@@ -1,0 +1,5 @@
+create table trying (locationid int, boxid int, latitude float(10,8), longitude float(10,8), classname varchar (10), airportname varchar(10), confidence float(2,1), mydate date, primary key (locationid);
+create table airplaneclass (classid int, classname varchar (100), primary key (classid));
+create table airport (airportid int, airportname varchar(100), primary key(airportid));
+create table finalinfo (boxid int, classid int, confidence float(2,1), primary key (boxid), foreign key (classid) references airplaneclass(classid));
+create table locations (locationid int, boxid int, airportid int, latitude float(10,8), longitude float(10, 8), capturedate date, primary key(locationid), foreign key (boxid) references finalinfo(boxid));
